@@ -1,24 +1,21 @@
-#Récupérer une image
+# Récupérer une image
 FROM python:3.12-slim
 LABEL authors="orelabk6"
 
-
-#Ajouter dans un dossier / ou se site l'appli
+# Ajouter dans un dossier / ou se site l'appli
 WORKDIR /app
+COPY . /app
 
-#copie ce qu'on a besoin de la machine local(projet) vers image
+# Copier ce qu'on a besoin de la machine locale (projet) vers l'image
 COPY app.py requirements.txt /app/
 
-
-#Installer les Requirements.txt
+# Installer les Requirements.txt
 RUN pip install -r requirements.txt
 
-
-#ajouter un port
+# Ajouter un port
 EXPOSE 5000
 
 COPY . .
-#Ajouter les varaibles d'environnement
 
-#pour lancer l'appli
-CMD ["python","app.py"]
+# Pour lancer l'appli
+CMD ["python", "app.py"]
